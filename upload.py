@@ -1,3 +1,5 @@
+# Author: justin0u0<mail@justin0u0.com>
+
 import requests
 import getpass
 
