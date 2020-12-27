@@ -46,10 +46,11 @@ for testcase in range(testcases):
 
   payload = {
     'time_limit': 1,
-    'memory_limit': 1
+    'memory_limit': 32
   }
 
   res = session.post(upload_url, headers=headers, files=files, data=payload)
 
   if res.status_code == 200:
     print(f'Upload {file_name}.in, {file_name}.out successfully')
+
