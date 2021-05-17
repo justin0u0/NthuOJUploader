@@ -7,8 +7,12 @@ url = 'https://acm.cs.nthu.edu.tw/users/login/'
 username = input('Username: ')
 password = getpass.getpass('Password: ')
 
+headers = {
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+}
+
 session = requests.session()
-r = session.get(url)
+r = session.get(url, headers=headers)
 
 payload = {
   'username': username,
@@ -18,6 +22,7 @@ payload = {
 
 headers = {
   'Referer': url,
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
 }
 
 res = session.post(url, headers=headers, data=payload)
@@ -30,7 +35,8 @@ upload_url = f'https://acm.cs.nthu.edu.tw/problem/{problem_id}/testcase/'
 
 headers = {
   'Referer': f'https://acm.cs.nthu.edu.tw/problem/{problem_id}/edit/',
-  'X-CSRFToken': session.cookies['csrftoken']
+  'X-CSRFToken': session.cookies['csrftoken'],
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
 }
 
 testcases = int(input('Number of testcases: '))
